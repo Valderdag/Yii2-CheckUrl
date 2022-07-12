@@ -6,20 +6,12 @@
     <br>
 </p>
 
-<p style="text-align: center" >Реализуется на фреймворке Yii2 Advanced Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
-developing complex Web applications with multiple tiers.</p>
+<p style="text-align: center" >Реализуется на фреймворке Yii2 Advanced [Yii 2](http://www.yiiframework.com/)</p>
 
-<p style="text-align: center" >The template includes three tiers: front end, back end, and console, each of which
-is a separate Yii application.</p>
+<p style="text-align: center" >Используются yiisoft/yii2-httpclient, hail812/yii2-adminlte3 </p>
 
-<p style="text-align: center" >The template is designed to work in a team development environment. It supports
-deploying the application in different environments.</p>
-
-Вся документация тут [docs/guide/README.md](docs/guide/README.md).
-
-[![Latest Stable Version](https://img.shields.io/packagist/v/yiisoft/yii2-app-advanced.svg)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
-[![Total Downloads](https://img.shields.io/packagist/dt/yiisoft/yii2-app-advanced.svg)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
-[![build](https://github.com/yiisoft/yii2-app-advanced/workflows/build/badge.svg)](https://github.com/yiisoft/yii2-app-advanced/actions?query=workflow%3Abuild)
+<p style="text-align: center" >Front: проверяет доступность урла, если ответ меньше 399 - запрос повторяется заданное количество раз, с заданным тайм-аутом. Выводится сообщение об успехе. Несуществующие или заблокированные сайты выводять соответствующее сообщение, не вызывают сбой приложения.</p>
+<p style="text-align: center" >Backend: доступен список проверенных урлов, информация по каждому урлу с датой проверки, кодом ответа, номером попытки и установленной задержкой. Заблокированные и не существующие адреса в базу не пишутся.</p>
 
 DIRECTORY STRUCTURE
 -------------------
@@ -29,7 +21,8 @@ common
     config/              contains shared configurations
     mail/                contains view files for e-mails
     models/              contains model classes used in both backend and frontend
-    tests/               contains tests for common classes    
+    tests/               contains tests for common classes   
+    helpers/             contains shared helper
 console
     config/              contains console configurations
     controllers/         contains console controllers (commands)
