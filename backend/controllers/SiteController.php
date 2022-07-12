@@ -2,8 +2,11 @@
 
 namespace backend\controllers;
 
+use common\models\Checking;
 use common\models\LoginForm;
+use common\models\User;
 use Yii;
+use yii\db\Query;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -28,7 +31,7 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['logout', 'index', 'users', 'checking', 'checkinfo'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -101,4 +104,33 @@ class SiteController extends Controller
 
         return $this->goHome();
     }
+
+    /**
+     * Users action
+     * @return string
+     * *
+     */
+    public function actionUsers()
+    {
+        $users = User::find()->all();
+
+        return $this->render('users', ['users' => $users]);
+    }
+
+    /**
+     * Check Links action
+     * @return string
+     */
+    public function actionChecking()
+    {
+        $cheking = Checking::find()->select('url', 'DISTINCT')->all();
+
+        return $this->render('checking', ['cheking' => $cheking]);
+    }
+    public function actionCheckinfo($url)
+    {
+        $infos = Checking::find()->where(['url' => $url])->all();
+        return $this->render('checkinfo' , ['infos' => $infos]);
+    }
+
 }
