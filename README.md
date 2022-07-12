@@ -6,7 +6,7 @@
     <br>
 </p>
 
-<p align="center" >Реализуется на фреймворке Yii2 Advanced [Yii 2](http://www.yiiframework.com/)</p>
+<p align="center" >Реализуется на фреймворке Yii2 Advanced (https://www.yiiframework.com/)</p>
 
 <p align="center" >Используются yiisoft/yii2-httpclient, hail812/yii2-adminlte3 </p>
 
