@@ -2,7 +2,9 @@
 
 namespace common\models;
 
-class Checking
+use yii\db\ActiveRecord;
+
+class Checking extends ActiveRecord
 {
 
 }
