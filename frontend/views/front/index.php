@@ -4,9 +4,8 @@ use yii\bootstrap4\Html;
 use yii\bootstrap4\ActiveForm;
 
 $this->title = 'Link Checker';
-$this->params['breadcrumbs'][] = $this->title;
-
-?>
+//$this->params['breadcrumbs'][] = $this->title;
+ ?>
 <div class="site-index">
 
     <div class="jumbotron text-center bg-transparent">
