@@ -4,7 +4,7 @@ namespace common\helpers;
 
 use yii\httpclient\Client;
 use yii\httpclient\Exception;
-use common\models\Checking;
+use common\models\Checked;
 
 class HttpClientHelper
 {
@@ -19,7 +19,7 @@ class HttpClientHelper
                     ->setUrl($url)
                     ->send();
                 if ($response) {
-                    $check = new Checking();
+                    $check = new Checked();
                     $check->url = $url;
                     $check->delay = $delay;
                     $check->status = $response->getStatusCode();

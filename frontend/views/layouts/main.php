@@ -35,7 +35,7 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [
-        ['label' => 'Checker', 'url' => ['/front/index']],
+        ['label' => 'Checker', 'url' => ['/site/index']],
         /*['label' => 'About', 'url' => ['/site/about']],
         ['label' => 'Contact', 'url' => ['/site/contact']],*/
     ];

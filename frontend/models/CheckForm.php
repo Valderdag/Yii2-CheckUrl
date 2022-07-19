@@ -10,13 +10,15 @@ class CheckForm extends Model
     public $repeat;
     public $timeout;
 
-    public function rules(){
+    public function rules(): array
+    {
         return [
             [['url', 'repeat', 'timeout'], 'required'],
             ['url', 'url' ],
         ];
     }
-    public function attributeLabels(){
+    public function attributeLabels(): array
+    {
         return [
 
         ];

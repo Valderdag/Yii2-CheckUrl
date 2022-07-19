@@ -2,9 +2,11 @@
 
 namespace backend\controllers;
 
-use common\models\Checking;
+use backend\models\MassCheckForm;
+use common\models\Checked;
 use common\models\LoginForm;
 use common\models\User;
+use JetBrains\PhpStorm\ArrayShape;
 use Yii;
 use yii\db\Query;
 use yii\filters\VerbFilter;
@@ -20,7 +22,7 @@ class SiteController extends Controller
     /**
      * {@inheritdoc}
      */
-    public function behaviors()
+    #[ArrayShape(['access' => "array", 'verbs' => "array"])] public function behaviors()
     {
         return [
             'access' => [
@@ -31,7 +33,7 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index', 'users', 'checking', 'checkinfo'],
+                        'actions' => ['logout', 'index', 'users', 'checked', 'checkinfo'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -49,7 +51,7 @@ class SiteController extends Controller
     /**
      * {@inheritdoc}
      */
-    public function actions()
+    #[ArrayShape(['error' => "string[]"])] public function actions()
     {
         return [
             'error' => [
@@ -63,9 +65,11 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionIndex()
+    public function actionIndex(): string
     {
-        return $this->render('index');
+        $model = new MassCheckForm();
+
+        return $this->render('index', compact('model'));
     }
 
     /**
@@ -73,7 +77,7 @@ class SiteController extends Controller
      *
      * @return string|Response
      */
-    public function actionLogin()
+    public function actionLogin(): Response|string
     {
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
@@ -98,7 +102,7 @@ class SiteController extends Controller
      *
      * @return Response
      */
-    public function actionLogout()
+    public function actionLogout(): Response
     {
         Yii::$app->user->logout();
 
@@ -110,7 +114,7 @@ class SiteController extends Controller
      * @return string
      * *
      */
-    public function actionUsers()
+    public function actionUsers(): string
     {
         $users = User::find()->all();
 
@@ -121,15 +125,16 @@ class SiteController extends Controller
      * Check Links action
      * @return string
      */
-    public function actionChecking()
+    public function actionChecked(): string
     {
-        $cheking = Checking::find()->select('url', 'DISTINCT')->all();
+        $checked = Checked::find()->select('url', 'DISTINCT')->all();
 
-        return $this->render('checking', ['cheking' => $cheking]);
+        return $this->render('checked', compact('checked'));
+
     }
-    public function actionCheckinfo($url)
+    public function actionCheckinfo($url): string
     {
-        $infos = Checking::find()->where(['url' => $url])->all();
+        $infos = Checked::find()->where(['url' => $url])->all();
         return $this->render('checkinfo' , ['infos' => $infos]);
     }
 

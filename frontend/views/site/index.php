@@ -9,9 +9,9 @@ $this->title = 'Link Checker';
 <div class="site-index">
 
     <div class="jumbotron text-center bg-transparent">
-        <h1 class="display-4">Link Check Now!</h1>
+        <h1 class="display-4">Check Url Availability</h1>
 
-        <?php $form = ActiveForm::begin(['id' => 'check-form'],); ?>
+        <?php $form = ActiveForm::begin(['id' => 'check-form']); ?>
 
         <?= $form->field($model, 'url', ['enableAjaxValidation' => false])->textInput(['style' => 'text-align:center', 'placeholder' => "Enter tested url"])->label(false) ?>
         <div class="btn-group" >
@@ -31,7 +31,7 @@ $this->title = 'Link Checker';
 
 
         <p style="margin-top: 30px">
-            <?= Html::submitButton('Check Link', ['class' => 'btn btn-primary btn-lg', 'name' => 'check-button']) ?>
+            <?= Html::submitButton('Check Now!', ['class' => 'btn btn-primary btn-lg', 'name' => 'check-button']) ?>
         </p>
 
         <?php ActiveForm::end(); ?>

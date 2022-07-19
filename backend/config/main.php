@@ -16,7 +16,7 @@ return [
         'request' => [
             'csrfParam' => '_csrf-backend',
         ],
-       'view' => [
+        'view' => [
             'theme' => [
                 'pathMap' => [
                     '@app/views' => '@backend/views/src/views'

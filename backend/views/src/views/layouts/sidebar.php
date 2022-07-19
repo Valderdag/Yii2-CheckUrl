@@ -9,7 +9,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="<?=$assetDir?>/img/admin.png" class="img-circle elevation-2" alt="User Image">
+                <img src="<?=$assetDir?>/img/admin.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
                 <a href="#" class="d-block">Vladimir Kubanskiy</a>
@@ -49,7 +49,7 @@
                     ['label' => 'Gii',  'icon' => 'file-code', 'url' => ['/gii'], 'target' => '_blank'],
                     ['label' => 'Debug', 'icon' => 'bug', 'url' => ['/debug'], 'target' => '_blank'],*/
                     ['label' => 'MENU', 'header' => true],
-                    ['label' => 'Check Links', 'url' => ['site/checking']],
+                    ['label' => 'Checked Links', 'url' => ['site/checked']],
                     /*[
                         'label' => 'Level1',
                         'items' => [
