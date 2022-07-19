@@ -10,7 +10,6 @@ class HttpClientHelper
 {
     public static function runCheck($url, $repeat, $delay)
     {
-
         for ($i = 1; $i <= $repeat; $i++) {
             try {
                 $client = new Client();

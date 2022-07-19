@@ -76,6 +76,7 @@ class SiteController extends Controller
      * @return mixed
      */
     public function actionIndex(){
+
         $model = new CheckForm();
         if ($model->load(\Yii::$app->request->post()) && $model->validate()) {
             $url = $model->url;

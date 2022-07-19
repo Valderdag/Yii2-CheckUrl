@@ -2,17 +2,18 @@
 
 namespace backend\controllers;
 
-use backend\models\MassCheckForm;
+use backend\models\CheckForm;
 use common\models\Checked;
 use common\models\LoginForm;
 use common\models\User;
-use JetBrains\PhpStorm\ArrayShape;
 use Yii;
 use yii\db\Query;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
+use common\helpers\HttpClientHelper;
+use common\jobs\CheckJob;
 
 /**
  * Site controller
@@ -51,7 +52,7 @@ class SiteController extends Controller
     /**
      * {@inheritdoc}
      */
-    #[ArrayShape(['error' => "string[]"])] public function actions()
+    public function actions()
     {
         return [
             'error' => [
@@ -67,9 +68,19 @@ class SiteController extends Controller
      */
     public function actionIndex(): string
     {
-        $model = new MassCheckForm();
+        $model = new CheckForm();
+        if ($model->load(\Yii::$app->request->post()) && $model->validate()) {
+            $urls = explode(',', $model->listurl);
+            foreach ($urls as $url){
+                Yii::$app->queue->push(new CheckJob([
+                    'url' => $url,
+                    'delay' => $model->delay,
+                    'attempt' => $model->attempt,
+                ]));
+            }
 
-        return $this->render('index', compact('model'));
+        }
+       return $this->render('index', ['model' => $model]);
     }
 
     /**
@@ -132,10 +143,11 @@ class SiteController extends Controller
         return $this->render('checked', compact('checked'));
 
     }
+
     public function actionCheckinfo($url): string
     {
         $infos = Checked::find()->where(['url' => $url])->all();
-        return $this->render('checkinfo' , ['infos' => $infos]);
+        return $this->render('checkinfo', ['infos' => $infos]);
     }
 
 }

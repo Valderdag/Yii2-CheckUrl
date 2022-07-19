@@ -20,7 +20,7 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
                         <td><?= $info->date ?></td>
                         <td><?= $info->url ?></td>
                         <td><?= $info->status ?></td>
-                        <td><?= $info->attemp ?></td>
+                        <td><?= $info->attempt ?></td>
                         <td><?= $info->delay ?></td>
                     </tr>
                 <?php } ?>
