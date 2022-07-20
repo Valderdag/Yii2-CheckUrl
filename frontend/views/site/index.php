@@ -15,7 +15,7 @@ $this->title = 'Link Checker';
 
         <?= $form->field($model, 'url', ['enableAjaxValidation' => false])->textInput(['style' => 'text-align:center', 'placeholder' => "Enter tested url"])->label(false) ?>
         <div class="btn-group" >
-            <?= $form->field($model, 'repeat')->dropDownList(['1' => "1 ",
+            <?= $form->field($model, 'attempt')->dropDownList(['1' => "1 ",
                 '2' => "2 ",
                 '3' => "3 ",
                 '4' => "4 ",
@@ -24,9 +24,9 @@ $this->title = 'Link Checker';
                 '7' => "7 ",
                 '8' => "8 ",
                 '9' => "9 ",
-                '10' => "10 "], ['prompt' => 'Repeat', 'class' => 'dropdown dropright', 'data-toggle' => 'dropdown'])->label(false) ?>
+                '10' => "10 "], ['prompt' => 'Attempt', 'class' => 'dropdown dropright', 'data-toggle' => 'dropdown'])->label(false) ?>
 
-            <?= $form->field($model, 'timeout')->dropDownList(['1' => "1 second", '5' => "5 second", '10' => "10 second"], ['prompt' => 'Timeout', 'class' => 'dropdown dropleft', 'data-toggle' => 'dropdown'])->label(false) ?>
+            <?= $form->field($model, 'delay')->dropDownList(['1' => "1 second", '5' => "5 second", '10' => "10 second"], ['prompt' => 'Delay', 'class' => 'dropdown dropleft', 'data-toggle' => 'dropdown'])->label(false) ?>
         </div>
 
 

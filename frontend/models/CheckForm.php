@@ -7,13 +7,13 @@ use yii\base\Model;
 class CheckForm extends Model
 {
     public $url;
-    public $repeat;
-    public $timeout;
+    public $attempt;
+    public $delay;
 
     public function rules(): array
     {
         return [
-            [['url', 'repeat', 'timeout'], 'required'],
+            [['url', 'attempt', 'delay'], 'required'],
             ['url', 'url' ],
         ];
     }

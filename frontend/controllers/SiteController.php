@@ -80,8 +80,8 @@ class SiteController extends Controller
         $model = new CheckForm();
         if ($model->load(\Yii::$app->request->post()) && $model->validate()) {
             $url = $model->url;
-            $rp =  $model->repeat;
-            $tm =  $model->timeout;
+            $rp =  $model->delay;
+            $tm =  $model->attempt;
             HttpClientHelper::runCheck($url, $rp, $tm);
             $this->refresh();
         } else {

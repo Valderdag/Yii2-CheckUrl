@@ -22,7 +22,7 @@ class HttpClientHelper
                     $check->url = $url;
                     $check->delay = $delay;
                     $check->status = $response->getStatusCode();
-                    $check->attemp = $i;
+                    $check->attempt = $i;
                     $check->save();
                     echo \Yii::$app->session->setFlash('success', "Сайт " . $url . " успешно проверен");
                 }
